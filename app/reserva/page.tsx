@@ -122,6 +122,9 @@ function ReservaConteudo() {
     setFinalizada(true);
   }
 
+  const inputClass =
+    "w-full rounded-xl border border-gray-400 bg-white px-4 py-3 text-black placeholder:text-gray-400 outline-none transition focus:border-black focus:ring-2 focus:ring-gray-200";
+
   if (finalizada) {
     return (
       <main className="min-h-screen bg-gray-50">
@@ -151,7 +154,7 @@ function ReservaConteudo() {
                 Reserva concluída
               </p>
 
-              <h1 className="mt-2 text-4xl font-black tracking-tight">
+              <h1 className="mt-2 text-4xl font-black tracking-tight text-black">
                 Tudo certo, {nome.split(" ")[0]}!
               </h1>
 
@@ -162,24 +165,26 @@ function ReservaConteudo() {
               <div className="mt-8 rounded-2xl bg-gray-50 p-6 text-left">
                 <div className="flex items-center justify-between border-b border-gray-200 pb-4">
                   <span className="text-sm text-gray-500">Veículo</span>
-                  <span className="font-black">{carro.nome}</span>
+                  <span className="font-black text-black">{carro.nome}</span>
                 </div>
 
                 <div className="flex items-center justify-between border-b border-gray-200 py-4">
                   <span className="text-sm text-gray-500">Retirada</span>
-                  <span className="font-bold">
+                  <span className="font-bold text-black">
                     {formatarData(dataInicio)}
                   </span>
                 </div>
 
                 <div className="flex items-center justify-between border-b border-gray-200 py-4">
                   <span className="text-sm text-gray-500">Devolução</span>
-                  <span className="font-bold">{formatarData(dataFim)}</span>
+                  <span className="font-bold text-black">
+                    {formatarData(dataFim)}
+                  </span>
                 </div>
 
                 <div className="flex items-center justify-between pt-4">
                   <span className="text-sm text-gray-500">Total</span>
-                  <span className="text-2xl font-black">
+                  <span className="text-2xl font-black text-black">
                     R$ {total.toFixed(2).replace(".", ",")}
                   </span>
                 </div>
@@ -234,7 +239,7 @@ function ReservaConteudo() {
               Faça sua simulação
             </p>
 
-            <h1 className="mt-2 text-4xl font-black tracking-tight md:text-5xl">
+            <h1 className="mt-2 text-4xl font-black tracking-tight text-black md:text-5xl">
               Reserve seu veículo.
             </h1>
 
@@ -300,16 +305,20 @@ function ReservaConteudo() {
 
                   <div className="mt-4 flex items-center justify-between rounded-2xl bg-gray-50 p-5">
                     <div>
-                      <p className="text-xl font-black">{carro.nome}</p>
+                      <p className="text-xl font-black text-black">
+                        {carro.nome}
+                      </p>
+
                       <p className="mt-1 text-sm text-gray-500">
                         {carro.marca} · {carro.categoria}
                       </p>
                     </div>
 
                     <div className="text-right">
-                      <p className="text-2xl font-black">
+                      <p className="text-2xl font-black text-black">
                         R$ {carro.preco}
                       </p>
+
                       <p className="text-xs text-gray-500">por diária</p>
                     </div>
                   </div>
@@ -317,7 +326,7 @@ function ReservaConteudo() {
 
                 <div className="space-y-6">
                   <div>
-                    <label className="mb-2 block text-sm font-black">
+                    <label className="mb-2 block text-sm font-black text-black">
                       Seu nome
                     </label>
 
@@ -326,13 +335,13 @@ function ReservaConteudo() {
                       value={nome}
                       onChange={(e) => setNome(e.target.value)}
                       placeholder="Digite seu nome"
-                      className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
+                      className={inputClass}
                     />
                   </div>
 
                   <div className="grid gap-5 md:grid-cols-2">
                     <div>
-                      <label className="mb-2 block text-sm font-black">
+                      <label className="mb-2 block text-sm font-black text-black">
                         Data de retirada
                       </label>
 
@@ -340,12 +349,12 @@ function ReservaConteudo() {
                         type="date"
                         value={dataInicio}
                         onChange={(e) => setDataInicio(e.target.value)}
-                        className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
+                        className={inputClass}
                       />
                     </div>
 
                     <div>
-                      <label className="mb-2 block text-sm font-black">
+                      <label className="mb-2 block text-sm font-black text-black">
                         Data de devolução
                       </label>
 
@@ -353,7 +362,7 @@ function ReservaConteudo() {
                         type="date"
                         value={dataFim}
                         onChange={(e) => setDataFim(e.target.value)}
-                        className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
+                        className={inputClass}
                       />
                     </div>
                   </div>
@@ -378,34 +387,36 @@ function ReservaConteudo() {
                   Resumo
                 </p>
 
-                <h2 className="mt-2 text-2xl font-black">
+                <h2 className="mt-2 text-2xl font-black text-black">
                   Sua reserva
                 </h2>
 
                 <div className="mt-6 space-y-4">
                   <div className="flex justify-between gap-4">
                     <span className="text-sm text-gray-500">Veículo</span>
-                    <span className="text-right text-sm font-black">
+                    <span className="text-right text-sm font-black text-black">
                       {carro.nome}
                     </span>
                   </div>
 
                   <div className="flex justify-between gap-4">
                     <span className="text-sm text-gray-500">Diária</span>
-                    <span className="text-sm font-black">
+                    <span className="text-sm font-black text-black">
                       R$ {carro.preco}
                     </span>
                   </div>
 
                   <div className="flex justify-between gap-4">
                     <span className="text-sm text-gray-500">Diárias</span>
-                    <span className="text-sm font-black">{dias}</span>
+                    <span className="text-sm font-black text-black">
+                      {dias}
+                    </span>
                   </div>
 
                   <div className="border-t border-gray-200 pt-4">
                     <div className="flex items-center justify-between">
-                      <span className="font-black">Total</span>
-                      <span className="text-2xl font-black">
+                      <span className="font-black text-black">Total</span>
+                      <span className="text-2xl font-black text-black">
                         R$ {total.toFixed(2).replace(".", ",")}
                       </span>
                     </div>
@@ -421,7 +432,7 @@ function ReservaConteudo() {
                     Dados da reserva
                   </p>
 
-                  <h2 className="mt-2 text-3xl font-black">
+                  <h2 className="mt-2 text-3xl font-black text-black">
                     Confira e escolha o pagamento
                   </h2>
                 </div>
@@ -429,26 +440,30 @@ function ReservaConteudo() {
                 <div className="mt-6 rounded-2xl bg-gray-50 p-5">
                   <div className="flex justify-between gap-4 border-b border-gray-200 pb-4">
                     <span className="text-sm text-gray-500">Cliente</span>
-                    <span className="text-right font-black">{nome}</span>
+                    <span className="text-right font-black text-black">
+                      {nome}
+                    </span>
                   </div>
 
                   <div className="flex justify-between gap-4 border-b border-gray-200 py-4">
                     <span className="text-sm text-gray-500">Veículo</span>
-                    <span className="text-right font-black">
+                    <span className="text-right font-black text-black">
                       {carro.nome}
                     </span>
                   </div>
 
                   <div className="flex justify-between gap-4 pt-4">
                     <span className="text-sm text-gray-500">Período</span>
-                    <span className="text-right font-black">
+                    <span className="text-right font-black text-black">
                       {formatarData(dataInicio)} → {formatarData(dataFim)}
                     </span>
                   </div>
                 </div>
 
                 <div className="mt-8">
-                  <p className="text-lg font-black">Forma de pagamento</p>
+                  <p className="text-lg font-black text-black">
+                    Forma de pagamento
+                  </p>
 
                   <div className="mt-4 grid gap-3 md:grid-cols-3">
                     <button
@@ -456,7 +471,7 @@ function ReservaConteudo() {
                       className={`rounded-2xl border p-4 text-left transition ${
                         formaPagamento === "cartao"
                           ? "border-black bg-black text-white"
-                          : "border-gray-200 bg-white hover:border-gray-400"
+                          : "border-gray-200 bg-white text-black hover:border-gray-400"
                       }`}
                     >
                       <p className="text-2xl">💳</p>
@@ -477,7 +492,7 @@ function ReservaConteudo() {
                       className={`rounded-2xl border p-4 text-left transition ${
                         formaPagamento === "pix"
                           ? "border-black bg-black text-white"
-                          : "border-gray-200 bg-white hover:border-gray-400"
+                          : "border-gray-200 bg-white text-black hover:border-gray-400"
                       }`}
                     >
                       <p className="text-2xl">📱</p>
@@ -498,7 +513,7 @@ function ReservaConteudo() {
                       className={`rounded-2xl border p-4 text-left transition ${
                         formaPagamento === "debito"
                           ? "border-black bg-black text-white"
-                          : "border-gray-200 bg-white hover:border-gray-400"
+                          : "border-gray-200 bg-white text-black hover:border-gray-400"
                       }`}
                     >
                       <p className="text-2xl">💵</p>
@@ -519,7 +534,7 @@ function ReservaConteudo() {
                 {formaPagamento === "cartao" && (
                   <div className="mt-6 space-y-5 rounded-2xl border border-gray-200 p-5">
                     <div>
-                      <label className="mb-2 block text-sm font-black">
+                      <label className="mb-2 block text-sm font-black text-black">
                         Número do cartão
                       </label>
 
@@ -528,12 +543,12 @@ function ReservaConteudo() {
                         value={numeroCartao}
                         onChange={(e) => setNumeroCartao(e.target.value)}
                         placeholder="0000 0000 0000 0000"
-                        className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-black"
+                        className={inputClass}
                       />
                     </div>
 
                     <div>
-                      <label className="mb-2 block text-sm font-black">
+                      <label className="mb-2 block text-sm font-black text-black">
                         Nome no cartão
                       </label>
 
@@ -542,13 +557,13 @@ function ReservaConteudo() {
                         value={nomeCartao}
                         onChange={(e) => setNomeCartao(e.target.value)}
                         placeholder="NOME COMPLETO"
-                        className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-black"
+                        className={inputClass}
                       />
                     </div>
 
                     <div className="grid gap-5 md:grid-cols-2">
                       <div>
-                        <label className="mb-2 block text-sm font-black">
+                        <label className="mb-2 block text-sm font-black text-black">
                           Validade
                         </label>
 
@@ -557,12 +572,12 @@ function ReservaConteudo() {
                           value={validade}
                           onChange={(e) => setValidade(e.target.value)}
                           placeholder="MM/AA"
-                          className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-black"
+                          className={inputClass}
                         />
                       </div>
 
                       <div>
-                        <label className="mb-2 block text-sm font-black">
+                        <label className="mb-2 block text-sm font-black text-black">
                           CVV
                         </label>
 
@@ -571,7 +586,7 @@ function ReservaConteudo() {
                           value={cvv}
                           onChange={(e) => setCvv(e.target.value)}
                           placeholder="123"
-                          className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-black"
+                          className={inputClass}
                         />
                       </div>
                     </div>
@@ -581,7 +596,7 @@ function ReservaConteudo() {
                 {formaPagamento === "pix" && (
                   <div className="mt-6 rounded-2xl border border-gray-200 p-6">
                     <div className="flex flex-col items-center text-center">
-                      <p className="text-lg font-black">
+                      <p className="text-lg font-black text-black">
                         QR Code demonstrativo
                       </p>
 
@@ -616,7 +631,7 @@ function ReservaConteudo() {
                 {formaPagamento === "debito" && (
                   <div className="mt-6 space-y-5 rounded-2xl border border-gray-200 p-5">
                     <div>
-                      <label className="mb-2 block text-sm font-black">
+                      <label className="mb-2 block text-sm font-black text-black">
                         Número do cartão
                       </label>
 
@@ -625,12 +640,12 @@ function ReservaConteudo() {
                         value={numeroCartao}
                         onChange={(e) => setNumeroCartao(e.target.value)}
                         placeholder="0000 0000 0000 0000"
-                        className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-black"
+                        className={inputClass}
                       />
                     </div>
 
                     <div>
-                      <label className="mb-2 block text-sm font-black">
+                      <label className="mb-2 block text-sm font-black text-black">
                         Nome no cartão
                       </label>
 
@@ -639,7 +654,7 @@ function ReservaConteudo() {
                         value={nomeCartao}
                         onChange={(e) => setNomeCartao(e.target.value)}
                         placeholder="NOME COMPLETO"
-                        className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-black"
+                        className={inputClass}
                       />
                     </div>
                   </div>
@@ -669,7 +684,7 @@ function ReservaConteudo() {
                       setConfirmando(false);
                       setErro("");
                     }}
-                    className="rounded-xl border border-gray-300 px-6 py-4 font-black transition hover:bg-gray-100"
+                    className="rounded-xl border border-gray-300 px-6 py-4 font-black text-black transition hover:bg-gray-100"
                   >
                     ← Voltar e editar
                   </button>
@@ -688,26 +703,29 @@ function ReservaConteudo() {
                   Total
                 </p>
 
-                <h2 className="mt-2 text-2xl font-black">
+                <h2 className="mt-2 text-2xl font-black text-black">
                   Resumo do pedido
                 </h2>
 
                 <div className="mt-6 space-y-4">
                   <div className="flex justify-between gap-4">
                     <span className="text-sm text-gray-500">Veículo</span>
-                    <span className="text-right text-sm font-black">
+                    <span className="text-right text-sm font-black text-black">
                       {carro.nome}
                     </span>
                   </div>
 
                   <div className="flex justify-between gap-4">
                     <span className="text-sm text-gray-500">Diárias</span>
-                    <span className="text-sm font-black">{dias}</span>
+                    <span className="text-sm font-black text-black">
+                      {dias}
+                    </span>
                   </div>
 
                   <div className="flex justify-between gap-4">
                     <span className="text-sm text-gray-500">Pagamento</span>
-                    <span className="text-right text-sm font-black">
+
+                    <span className="text-right text-sm font-black text-black">
                       {formaPagamento === "cartao"
                         ? "Cartão de crédito"
                         : formaPagamento === "pix"
@@ -719,7 +737,7 @@ function ReservaConteudo() {
                   <div className="border-t border-gray-200 pt-5">
                     <p className="text-sm text-gray-500">Total</p>
 
-                    <p className="mt-1 text-4xl font-black">
+                    <p className="mt-1 text-4xl font-black text-black">
                       R$ {total.toFixed(2).replace(".", ",")}
                     </p>
                   </div>
@@ -738,9 +756,7 @@ export default function ReservaPage() {
     <Suspense
       fallback={
         <main className="flex min-h-screen items-center justify-center bg-gray-50">
-          <p className="font-bold text-gray-500">
-            Carregando reserva...
-          </p>
+          <p className="font-bold text-gray-500">Carregando reserva...</p>
         </main>
       }
     >
